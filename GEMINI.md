@@ -24,8 +24,15 @@ An application to help Magic: The Gathering players exchange cards using a "virt
 -   **External APIs:** Scryfall, MTGJSON
 
 ## Status
--   [x] **Planning:** Analysis and requirement gathering.
+
+- [x] **Planning:** Analysis and requirement gathering.
+
     -   [x] Initial Requirements
+
     -   [x] Tech Stack Definition
+
     -   [x] Domain Modeling
--   [ ] **Implementation:** Not started.
+
+- [ ] **Implementation:** In Progress.
+
+    -   [x] US-01: Project Setup

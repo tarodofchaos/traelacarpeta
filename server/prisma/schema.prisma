@@ -1,15 +1,29 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Card {
+  id              String   @id // Scryfall ID
+  name            String
+  set_code        String
+  set_name        String
+  collector_number String
+  image_uri       String?  // Nullable because some cards (like textless) might handle images differently or back faces
+  small_image_uri String?
+  oracle_text     String?
+  type_line       String?
+  rarity          String
+  prices          Json?    // JSONB for flexible pricing data (usd, eur, tix)
+  
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+
+  @@index([name])
+  @@index([set_code])
 }
