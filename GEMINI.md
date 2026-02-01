@@ -36,3 +36,5 @@ An application to help Magic: The Gathering players exchange cards using a "virt
 - [ ] **Implementation:** In Progress.
 
     -   [x] US-01: Project Setup
+
+    -   [x] US-02: Card Data Synchronization

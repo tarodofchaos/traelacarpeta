@@ -1,13 +1,5 @@
 const request = require('supertest');
-const express = require('express');
-const cors = require('cors');
-
-const app = express();
-app.use(cors());
-app.use(express.json());
-app.get('/', (req, res) => {
-  res.json({ message: 'MTG Card Trader API is running' });
-});
+const app = require('../app');
 
 describe('GET /', () => {
   it('responds with json', async () => {

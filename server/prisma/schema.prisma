@@ -8,18 +8,32 @@ datasource db {
   url      = "file:./dev.db"
 }
 
+model User {
+  id            String   @id @default(uuid())
+  email         String   @unique
+  password_hash String?  // Nullable for future OAuth users
+  name          String?
+  
+  // Future relations
+  // collection CollectionItem[]
+  // wants      WantItem[]
+
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+}
+
 model Card {
   id              String   @id // Scryfall ID
   name            String
   set_code        String
   set_name        String
   collector_number String
-  image_uri       String?  // Nullable because some cards (like textless) might handle images differently or back faces
+  image_uri       String?
   small_image_uri String?
   oracle_text     String?
   type_line       String?
   rarity          String
-  prices          Json?    // JSONB for flexible pricing data (usd, eur, tix)
+  prices          Json?
   
   created_at      DateTime @default(now())
   updated_at      DateTime @updatedAt
