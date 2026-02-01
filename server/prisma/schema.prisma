@@ -11,11 +11,10 @@ datasource db {
 model User {
   id            String   @id @default(uuid())
   email         String   @unique
-  password_hash String?  // Nullable for future OAuth users
+  password_hash String?
   name          String?
   
-  // Future relations
-  // collection CollectionItem[]
+  collection    CollectionItem[]
   // wants      WantItem[]
 
   created_at    DateTime @default(now())
@@ -35,9 +34,31 @@ model Card {
   rarity          String
   prices          Json?
   
+  collectionItems CollectionItem[]
+  
   created_at      DateTime @default(now())
   updated_at      DateTime @updatedAt
 
   @@index([name])
   @@index([set_code])
+}
+
+model CollectionItem {
+  id        String   @id @default(uuid())
+  user_id   String
+  user      User     @relation(fields: [user_id], references: [id])
+  card_id   String
+  card      Card     @relation(fields: [card_id], references: [id])
+  
+  quantity  Int      @default(1)
+  condition String   @default("NM") // NM, LP, MP, HP, D
+  finish    String   @default("normal") // normal, foil, etched
+  language  String   @default("en")
+  
+  is_for_trade Boolean @default(true)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@unique([user_id, card_id, condition, finish, language]) // Prevent duplicates of exact same variant
 }

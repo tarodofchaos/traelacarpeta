@@ -9,6 +9,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/collection', require('./routes/collectionRoutes'));
 
 app.get('/', (req, res) => {
   res.json({ message: 'MTG Card Trader API is running' });

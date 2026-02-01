@@ -38,3 +38,4 @@ An application to help Magic: The Gathering players exchange cards using a "virt
     -   [x] US-01: Project Setup
 
     -   [x] US-02: Card Data Synchronization
+    -   [x] US-03: User Registration & Authentication
