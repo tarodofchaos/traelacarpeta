@@ -39,4 +39,4 @@ An application to help Magic: The Gathering players exchange cards using a "virt
 
     -   [x] US-02: Card Data Synchronization
     -   [x] US-03: User Registration & Authentication
-    -   [x] US-04: Manage Collection (Backend API)
+    -   [x] US-04: Manage Collection (Virtual Binder)
